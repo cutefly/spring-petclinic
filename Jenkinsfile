@@ -13,9 +13,8 @@ pipeline {
       steps {
         sh 'mvn --version'
         sh 'pwd'
-        sh 'echo $HOME'
         sh 'ls -al'
-        sh 'ls -al $HOME/.m2/'
+        sh 'ls -al /.m2/'
         sh 'mvn -Dmaven.repo.local=/.m2/repository clean install'
       }
     }
