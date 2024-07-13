@@ -12,6 +12,9 @@ pipeline {
       }
       steps {
         sh 'mvn --version'
+        sh 'pwd'
+        sh 'ls -al'
+        sh 'ls -al /.m2/'
         sh 'mvn clean install'
       }
     }
