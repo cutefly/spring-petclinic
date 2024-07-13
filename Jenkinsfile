@@ -7,7 +7,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.9.8'
-          args '-v $HOME/.m2:/.m2'
+          args '-v /.m2:/.m2'
         }
       }
       steps {
@@ -16,7 +16,7 @@ pipeline {
         sh 'echo $HOME'
         sh 'ls -al'
         sh 'ls -al $HOME/.m2/'
-        sh 'mvn -Dmaven.repo.local=$HOME/.m2 clean install'
+        sh 'mvn -Dmaven.repo.local=/.m2/repository clean install'
       }
     }
     stage('Docker Build') {
