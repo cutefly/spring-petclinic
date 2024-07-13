@@ -13,9 +13,10 @@ pipeline {
       steps {
         sh 'mvn --version'
         sh 'pwd'
+        sh 'echo $HOME'
         sh 'ls -al'
-        sh 'ls -al /.m2/'
-        sh 'mvn clean install'
+        sh 'ls -al $HOME/.m2/'
+        sh 'mvn -Dmaven.repo.local=$HOME/.m2 clean install'
       }
     }
     stage('Docker Build') {
