@@ -11,7 +11,6 @@ pipeline {
         }
       }
       steps {
-        # sh 'mvn clean install'
         sh 'mvn --version'
         sh 'id'
         sh 'ls -al /'
