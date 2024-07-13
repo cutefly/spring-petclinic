@@ -11,7 +11,10 @@ pipeline {
         }
       }
       steps {
-        sh 'mvn -X clean install'
+        # sh 'mvn clean install'
+        sh 'mvn --version'
+        sh 'id'
+        sh 'ls -al /'
       }
     }
     stage('Docker Build') {
