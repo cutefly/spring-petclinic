@@ -7,13 +7,12 @@ pipeline {
       agent {
         docker {
           image 'maven:3.9.8'
-          args '-v /.m2:/.m2'
+          args '-v $HOME/.m2:/.m2'
         }
       }
       steps {
         sh 'mvn --version'
-        sh 'id'
-        sh 'ls -al /'
+        sh 'mvn clean install'
       }
     }
     stage('Docker Build') {
