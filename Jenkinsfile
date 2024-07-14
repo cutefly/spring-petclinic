@@ -14,7 +14,7 @@ pipeline {
         sh 'mvn --version'
         sh 'pwd'
         sh 'ls -al'
-        sh 'ls -al /.m2/'
+        sh 'ls -al /home/jenkins/.m2/repository'
         sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository clean install'
       }
     }
