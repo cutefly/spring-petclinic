@@ -23,7 +23,10 @@ pipeline {
       agent any
       steps {
         script {
-          // 파일 전송
+            sh 'pwd'
+            sh 'ls -al'
+            sh 'ls -al target/'
+            // 파일 전송
           sshPublisher(
             failOnError: true,
             publishers: [
