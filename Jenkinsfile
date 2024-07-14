@@ -6,7 +6,7 @@ pipeline {
     stage('Maven Install') {
       agent {
         docker {
-          image 'maven:3.9.8'
+          image 'maven:3.9.8-eclipse-temurin-17'
           // args '-v /home/jenkins/.m2:/.m2'
         }
       }
