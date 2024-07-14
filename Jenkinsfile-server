@@ -1,0 +1,50 @@
+#!groovy
+
+pipeline {
+  agent none
+  stages {
+    stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.9.8-eclipse-temurin-17'
+          // args '-v /home/jenkins/.m2:/.m2'
+        }
+      }
+      steps {
+        sh 'mvn --version'
+        sh 'pwd'
+        // sh 'ls -al /home/jenkins/.m2/repository'
+        sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository -Dmaven.test.skip=true clean package'
+        sh 'ls -al'
+        sh 'ls -al target/'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        script {
+          // 파일 전송
+          sshPublisher(
+            failOnError: true,
+            publishers: [
+              sshPublisherDesc(
+                configName: '[SSH 서버 이름]',
+                verbose: true,
+                transfers: [
+                  sshTransfer(
+                    cleanRemote:false,
+                    sourceFiles: 'target/spring-petclinic-3.3.0-SNAPSHOT.jar',
+                    removePrefix: 'target',
+                    remoteDirectory: './deployRoot/',
+                  ),
+                  sshTransfer(
+                    execCommand: 'cd deployRoot && java -jar spring-petclinic-3.3.0-SNAPSHOT.jar'
+                  )
+                ]
+              )
+            ]
+          )
+        }
+      }
+    }
+  }
+}
