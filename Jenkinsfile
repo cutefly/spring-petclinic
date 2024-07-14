@@ -15,7 +15,7 @@ pipeline {
         sh 'pwd'
         sh 'ls -al'
         sh 'ls -al /.m2/'
-        sh 'mvn -Dmaven.repo.local=/.m2/repository clean install'
+        sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository clean install'
       }
     }
     stage('Docker Build') {
