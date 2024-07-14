@@ -41,8 +41,7 @@ pipeline {
                     remoteDirectory: './deployRoot/',
                   ),
                   sshTransfer(
-                    // execCommand: 'cd deployRoot && java -jar spring-petclinic-3.3.0-SNAPSHOT.jar'
-                    execCommand: 'pwd && ls -al'
+                    execCommand: 'cd deployRoot && java -jar spring-petclinic-3.3.0-SNAPSHOT.jar'
                   )
                 ]
               )
