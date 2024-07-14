@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
         sh 'mvn --version'
-        // sh 'pwd'
+        sh 'pwd'
         // sh 'ls -al /home/jenkins/.m2/repository'
         sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository -Dmaven.test.skip=true clean package'
         sh 'ls -al'
@@ -22,6 +22,9 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
+        sh 'pwd'
+        sh 'ls -al'
+        sh 'ls -al target/'
         sh 'docker build -t cutefly/spring-petclinic:latest .'
       }
     }
