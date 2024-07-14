@@ -7,7 +7,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.9.8'
-          args '-v /.m2:/.m2'
+          args '-v /home/jenkins/.m2:/.m2'
         }
       }
       steps {
