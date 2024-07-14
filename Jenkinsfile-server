@@ -20,6 +20,7 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent any
       steps {
         script {
           // 파일 전송
