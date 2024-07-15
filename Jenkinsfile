@@ -1,4 +1,4 @@
-ho#!groovy
+#!groovy
 
 pipeline {
   agent none
