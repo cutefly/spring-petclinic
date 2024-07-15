@@ -1,0 +1,12 @@
+#!groovy
+
+node {
+    stage('Maven Install') {
+      // maven build using docker
+      echo 'maven install'
+    } // stage
+    stage('Deploy') {
+      // upload jar & execute
+      echo 'deploy'
+    } // stage
+} // node
