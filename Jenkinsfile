@@ -14,7 +14,7 @@ pipeline {
         sh 'mvn --version'
         sh 'pwd'
         // sh 'ls -al /home/jenkins/.m2/repository'
-        sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository -Dmaven.test.skip=true clean package'
+        sh 'mvn -Dmaven.repo.local=$HOME/.m2/repository -Dmaven.test.skip=true clean package'
         sh 'ls -al'
         sh 'ls -al target/'
       }
