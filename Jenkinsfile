@@ -1,4 +1,4 @@
-#!groovy
+ho#!groovy
 
 pipeline {
   agent none
@@ -31,7 +31,7 @@ pipeline {
         sh 'pwd'
         sh 'ls -al'
         sh 'ls -al target/'
-        sh 'docker build -t cutefly/spring-petclinic:latest .'
+        sh 'echo "docker build -t cutefly/spring-petclinic:latest ."'
       }
     }
   }
