@@ -7,7 +7,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.9.8-eclipse-temurin-17'
-          // args '-v /home/jenkins/.m2:/.m2'
+          args '-v /home/ubuntu/.m2:/home/ubuntu/.m2'
         }
       }
       steps {
