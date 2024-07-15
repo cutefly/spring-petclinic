@@ -31,7 +31,7 @@ pipeline {
         sh 'pwd'
         sh 'ls -al'
         sh 'ls -al target/'
-        sh 'echo "docker build -t cutefly/spring-petclinic:latest ."'
+        sh 'echo docker build -t cutefly/spring-petclinic:latest .'
       }
     }
   }
