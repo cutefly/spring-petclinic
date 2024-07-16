@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-  agent none
+  agent {node { label 'agent02' } }
   stages {
     stage('Maven Install') {
       agent {
