@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-  agent { label 'agent02' }
+  agent { label 'agent02' } // agent
   stages {
     stage('Maven Install') {
       agent {
@@ -9,8 +9,8 @@ pipeline {
           image 'maven:3.9.8-eclipse-temurin-17'
           args '-v $HOME/.m2:/.m2'
           label 'agent02'
-        }
-      }
+        } // docker
+      } // agent
       steps {
         sh 'mvn --version'
         sh 'pwd'
@@ -21,11 +21,6 @@ pipeline {
         // sh 'mvn -Dmaven.repo.local=/home/ubuntu/.m2/repository -Dmaven.test.skip=true clean package'
         sh 'mvn -Dmaven.repo.local=/.m2/repository -Dmaven.test.skip=true -Dcheckstyle.skip=true clean package'
         sh 'ls -al target/'
-      }
-//    }
-//    stage('Deploy') {
-//      agent { label 'agent02' }
-      steps {
         script {
             sh 'pwd'
             sh 'env'
@@ -52,8 +47,8 @@ pipeline {
               )
             ]
           )
-        }
-      }
-    }
-  }
-}
+        } // script
+      } // steps
+    } // stage
+  } // stages
+} // pipeline
