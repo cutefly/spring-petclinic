@@ -23,7 +23,7 @@ pipeline {
       }
     }
     stage('Deploy') {
-      agent any
+      agent {node { label 'agent02' } }
       steps {
         script {
             sh 'pwd'
