@@ -13,6 +13,7 @@ pipeline {
       steps {
         sh 'mvn --version'
         sh 'pwd'
+        sh 'env'
         // sh 'ls -al /home/jenkins/.m2/repository'
         sh 'mvn -Dmaven.repo.local=/home/jenkins/.m2/repository -Dmaven.test.skip=true clean package'
         sh 'ls -al'
@@ -24,6 +25,7 @@ pipeline {
       steps {
         script {
             sh 'pwd'
+            sh 'env'
             sh 'ls -al'
             sh 'ls -al target/'
             // 파일 전송
