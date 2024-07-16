@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline {
-  agent {node { label 'agent02' } }
+  agent { label 'agent02' }
   stages {
     stage('Maven Install') {
       agent {
@@ -23,7 +23,7 @@ pipeline {
       }
     }
     stage('Deploy') {
-      agent {node { label 'agent02' } }
+      agent { label 'agent02' }
       steps {
         script {
             sh 'pwd'
