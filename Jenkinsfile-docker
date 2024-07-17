@@ -23,6 +23,12 @@ pipeline {
           sh 'ls -al /.m2/repository'
           sh 'mvn $MAVEN_OPTS -Dmaven.test.skip=true -Dcheckstyle.skip=true clean package'
           sh 'ls -al target/'
+        } // script
+      } // steps
+    }, // stage
+    stage('Deploy') {
+      steps {
+        script {
             // 파일 전송
           sshPublisher(
             failOnError: true,
