@@ -51,6 +51,7 @@ pipeline {
         always {
           // One or more steps need to be included within each condition's block.
           cleanWs()
+        } // post
       }
     } // stage
   } // stages
