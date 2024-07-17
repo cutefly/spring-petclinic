@@ -9,7 +9,7 @@ pipeline {
     docker {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
-      label '$NODE_LABEL'
+      label '${params.NODE_LABEL}'
     } // docker
   } // agent
   stages {
@@ -34,7 +34,7 @@ pipeline {
             failOnError: true,
             publishers: [
               sshPublisherDesc(
-                configName: '$SSH_CONFIG_NAME',
+                configName: '${params.SSH_CONFIG_NAME}',
                 verbose: true,
                 transfers: [
                   sshTransfer(
