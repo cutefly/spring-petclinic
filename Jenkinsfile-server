@@ -5,7 +5,6 @@ pipeline {
     MAVEN_CLI_OPTS = "--batch-mode"
     MAVEN_OPTS = "-Dmaven.repo.local=/.m2/repository"
   }
-  agent { label 'java' } // agent
   stages {
     stage('Maven Install') {
       agent {
