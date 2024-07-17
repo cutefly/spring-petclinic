@@ -14,7 +14,7 @@ pipeline {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
       // label '${params.NODE_LABEL}'
-      label 'agent'
+      label 'agent01'
     } // docker
   } // agent
   stages {
