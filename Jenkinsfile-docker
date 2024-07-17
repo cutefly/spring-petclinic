@@ -9,12 +9,12 @@ pipeline {
     string(name: 'NODE_LABEL', defaultValue: 'agent01', description: 'Where should I build?')
     string(name: 'SSH_CONFIG_NAEM', defaultValue: 'amd-ubuntu-linux', description: 'Where should I transfer?')
   } // parameters
-
   agent {
     docker {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
-      label '${params.NODE_LABEL}'
+      // label '${params.NODE_LABEL}'
+      label 'agent01'
     } // docker
   } // agent
   stages {
