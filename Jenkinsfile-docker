@@ -14,15 +14,15 @@ pipeline {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
       // label '${params.NODE_LABEL}'
-      label '${NODE_LABEL}'
+      label 'agent'
     } // docker
   } // agent
   stages {
     stage('Maven Install') {
       steps {
         script {
-          sh 'echo $NODE_LABEL'
           sh 'echo ${NODE_LABEL}'
+          sh 'echo ${SSH_CONFIG_NAME}'
           sh 'mvn --version'
           sh 'pwd'
           sh 'env'
