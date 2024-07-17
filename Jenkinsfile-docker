@@ -7,7 +7,7 @@ pipeline {
   }
   parameters {
     string(name: 'NODE_LABEL', defaultValue: 'agent01', description: 'Where should I build?')
-    string(name: 'SSH_CONFIG_NAEM', defaultValue: 'amd-ubuntu-linux', description: 'Where should I transfer?')
+    string(name: 'SSH_CONFIG_NAME', defaultValue: 'amd-ubuntu-linux', description: 'Where should I transfer?')
   } // parameters
   agent {
     docker {
