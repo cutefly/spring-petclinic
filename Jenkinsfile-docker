@@ -25,7 +25,7 @@ pipeline {
           sh 'ls -al target/'
         } // script
       } // steps
-    }, // stage
+    } // stage
     stage('Deploy') {
       steps {
         script {
