@@ -9,7 +9,7 @@ pipeline {
     docker {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
-      label 'agent01'
+      label '$NODE_LABEL'
     } // docker
   } // agent
   stages {
@@ -34,7 +34,7 @@ pipeline {
             failOnError: true,
             publishers: [
               sshPublisherDesc(
-                configName: 'amd-ubuntu-linux',
+                configName: '$SSH_CONFIG_NAME',
                 verbose: true,
                 transfers: [
                   sshTransfer(
@@ -56,8 +56,8 @@ pipeline {
         always {
           // One or more steps need to be included within each condition's block.
           cleanWs()
-        } // post
-      }
+        } // always
+      } // post
     } // stage
   } // stages
 } // pipeline
