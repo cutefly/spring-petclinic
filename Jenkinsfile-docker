@@ -5,16 +5,15 @@ pipeline {
     MAVEN_CLI_OPTS = "--batch-mode"
     MAVEN_OPTS = "-Dmaven.repo.local=/.m2/repository"
   }
-  agent { label 'agent01' } // agent
+  agent {
+    docker {
+      image 'maven:3.9.8-eclipse-temurin-17'
+      args '-v jenkins_repository:/.m2'
+      label 'agent01'
+    } // docker
+  } // agent
   stages {
     stage('Maven Install') {
-      agent {
-        docker {
-          image 'maven:3.9.8-eclipse-temurin-17'
-          args '-v jenkins_repository:/.m2'
-          label 'agent01'
-        } // docker
-      } // agent
       steps {
         script {
           sh 'mvn --version'
@@ -47,6 +46,12 @@ pipeline {
           )
         } // script
       } // steps
+      post {
+        always {
+          // One or more steps need to be included within each condition's block.
+          cleanWs()
+        } // post
+      }
     } // stage
   } // stages
 } // pipeline
