@@ -21,6 +21,9 @@ pipeline {
     stage('Maven Install') {
       steps {
         script {
+          sh 'echo $NODE_LABEL'
+          sh 'echo ${NODE_LABEL}'
+          sh 'echo ${params.NODE_LABEL}'
           sh 'mvn --version'
           sh 'pwd'
           sh 'env'
