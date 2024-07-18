@@ -4,7 +4,7 @@ pipeline {
   environment {
     MAVEN_CLI_OPTS = "--batch-mode"
     MAVEN_OPTS = "-Dmaven.repo.local=/.m2/repository"
-    SHELL_FILE_NAME = startup-$PARAM_SPRING_PROFILE.sh
+    SHELL_FILE_NAME = "startup-$PARAM_SPRING_PROFILE.sh"
   }
   agent {
     docker {
