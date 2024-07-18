@@ -4,21 +4,22 @@ pipeline {
   environment {
     MAVEN_CLI_OPTS = "--batch-mode"
     MAVEN_OPTS = "-Dmaven.repo.local=/.m2/repository"
+    SHELL_FILE_NAME = startup-$PARAM_SPRING_PROFILE.sh
   }
   agent {
     docker {
       image 'maven:3.9.8-eclipse-temurin-17'
       args '-v jenkins_repository:/.m2'
       // label '${params.NODE_LABEL}'
-      label "$NODE_LABEL"
+      label "agent01"
     } // docker
   } // agent
   stages {
     stage('Maven Install') {
       steps {
         script {
-          sh 'echo ${NODE_LABEL}'
-          sh 'echo ${SSH_CONFIG_NAME}'
+          sh 'echo ${PARAM_SSH_CONFIG_NAME}'
+          sh 'echo ${SHELL_FILE_NAME}'
           sh 'mvn --version'
           sh 'pwd'
           sh 'env'
@@ -37,7 +38,7 @@ pipeline {
             failOnError: true,
             publishers: [
               sshPublisherDesc(
-                configName: "$SSH_CONFIG_NAME",
+                configName: "$PARAM_SSH_CONFIG_NAME",
                 verbose: true,
                 transfers: [
                   sshTransfer(
